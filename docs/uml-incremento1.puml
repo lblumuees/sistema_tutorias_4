@@ -1,0 +1,63 @@
+@startuml
+title Sistema de Tutorías - Incremento 1
+
+' ==== Clases de dominio ====
+class Estudiante {
+    -id: int
+    -nombre: str
+}
+
+class Docente {
+    -id: int
+    -nombre: str
+}
+
+class Tutoria {
+    -id: int
+    -tema: str
+    -horario: str
+}
+
+class Reserva {
+    -id: int
+    -estado: str
+    +cambiarEstado(nuevoEstado: str)
+    +agregarObservador(obs: Notificador)
+    +notificarObservadores()
+}
+
+class ServicioReservas {
+    +cancelarReserva(reserva: Reserva)
+    -estrategia: CancelacionStrategy
+}
+
+' ==== Strategy Pattern ====
+interface CancelacionStrategy {
+    +cancelar(reserva: Reserva)
+}
+
+class CancelacionNormal
+class CancelacionPrioritaria
+class CancelacionGrupal
+
+CancelacionNormal ..|> CancelacionStrategy
+CancelacionPrioritaria ..|> CancelacionStrategy
+CancelacionGrupal ..|> CancelacionStrategy
+ServicioReservas --> CancelacionStrategy
+
+' ==== Observer Pattern ====
+interface Notificador {
+    +actualizar(reserva: Reserva)
+}
+
+class NotificadorCorreo
+class NotificadorCalendario
+class NotificadorPanel
+
+NotificadorCorreo ..|> Notificador
+NotificadorCalendario ..|> Notificador
+NotificadorPanel ..|> Notificador
+
+Reserva --> "*" Notificador : observers
+
+@enduml
