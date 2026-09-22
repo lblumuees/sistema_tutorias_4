@@ -23,7 +23,7 @@ sistema_tutorias_3/
 +-- .gitignore    # Archivos a excluir del control de versiones
 ```
 
-## Cambios refactorización
+## Conclusiones cambios refactorización
 
 - Las refactorizaciones aplicadas lograron separar responsabilidades y asignarlas a las clases correctas, lo que incrementa la claridad y mantenibilidad del sistema.
 - La cohesión mejoró porque cada clase ahora concentra métodos relacionados con su propósito (reservas, notificación, disponibilidad, validación de correo).
