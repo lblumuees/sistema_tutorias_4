@@ -1,6 +1,6 @@
-# Sistema de Tutorías – Semana 5 (Refactorización)
+# Sistema de Tutorías – Semana 6 (Refactorización respaldada por pruebas unitarias)
 
-En esta nueva etapa del sistema, se realizaron tests y análisis sobre refactorización, especialmente de la clase ServicioReservas.
+En esta nueva etapa del sistema, se realizaron refactorizaciones justificadas de mayor alcance.
 
 
 ## Estructura del repositorio
@@ -25,10 +25,14 @@ sistema_tutorias_3/
 
 ## Cambios refactorización
 
-- **Code Smells**:  
-  - `ServicioReservas.crear_reserva` - Método con demasiadas responsabilidades  
-  - `ServicioReservas (uso de notificador)` - La clase depende directamente de la implementación concreta del notificador
-  
+- Las refactorizaciones aplicadas lograron separar responsabilidades y asignarlas a las clases correctas, lo que incrementa la claridad y mantenibilidad del sistema.
+- La cohesión mejoró porque cada clase ahora concentra métodos relacionados con su propósito (reservas, notificación, disponibilidad, validación de correo).
+- El acoplamiento se redujo al delegar tareas específicas a nuevas clases (NotificadorReserva, Correo) y mover métodos a donde pertenecen (Tutoria).
+- Se fortaleció el modelo de dominio, introduciendo un Value Object para el correo, lo que garantiza datos más confiables y expresivos.
+- Los condicionales se simplificaron al centralizar la lógica de disponibilidad en Tutoria.
+- El uso de Git con commits pequeños y descriptivos dejó evidencia clara y trazable de cada refactorización, cumpliendo buenas prácticas de control de versiones. 
+
+
 
 ## Tecnologías
 
