@@ -8,16 +8,13 @@ class ServicioReservas:
         self.notificador = notificador
 
     def crear_reserva(self, estudiante, tutoria, fecha):
-        if not tutoria.disponible:
+        if not tutoria.evaluar_disponibilidad():   # ahora se delega a Tutoria
             return None
         
         reserva = self._crear_reserva_objeto(estudiante, tutoria, fecha)
         NotificadorReserva(self.notificador).notificar_creacion(estudiante)
         print(f"Tutoría {tutoria.materia} asignada a reserva {reserva.id}")
         return reserva
-
-    def _validar_disponibilidad(self, tutoria):
-        return tutoria.evaluar_disponibilidad()
 
     def _crear_reserva_objeto(self, estudiante, tutoria, fecha):
         reserva = Reserva(id=1, estudiante=estudiante, tutoria=tutoria, fecha=fecha)
